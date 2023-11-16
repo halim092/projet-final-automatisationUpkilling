@@ -15,7 +15,7 @@ public class TestScenarioCasTest1 {
 
     @BeforeMethod
     public void setUp() {
-        // Remplacez "webdriver.chrome.driver" par "webdriver.gecko.driver" si vous utilisez Gecko (Firefox)
+
         System.setProperty("webdriver.gecko.driver", "src/main/resources/geckodriver.exe");
         driver = new FirefoxDriver();
         driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
@@ -35,12 +35,9 @@ public class TestScenarioCasTest1 {
 
         // 4. Validez la création
         new EmployeeCreationPage(driver).clickSave();
-        // Ajoutez ici le code de validation si nécessaire
+
     }
 
-    // Vous pouvez ajouter d'autres méthodes de test si nécessaire
-
-    // Il est recommandé d'avoir une méthode de fermeture après chaque méthode de test
     @AfterMethod
     public void tearDown() {
       //  driver.quit();
