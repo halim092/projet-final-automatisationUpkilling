@@ -32,30 +32,38 @@ public class EmployeeCreationPage {
     }
 
     public EmployeeCreationPage enterFirstName(String firstName) {
+        log.info("Entering First Name: [{}]", firstName);
         WebElement firstNameElement = waitForElement(firstNameInput);
         firstNameElement.sendKeys(firstName);
         return this;
     }
 
     public EmployeeCreationPage enterMiddleName(String middleName) {
+        log.info("Entering Middle Name: [{}]", middleName);
         WebElement middleNameElement = waitForElement(middleNameInput);
         middleNameElement.sendKeys(middleName);
         return this;
     }
 
     public EmployeeCreationPage enterLastName(String lastName) {
+        log.info("Entering Last Name: [{}]", lastName);
         WebElement lastNameElement = waitForElement(lastNameInput);
         lastNameElement.sendKeys(lastName);
         return this;
     }
 
-    public void clickSave() {
+    public EmployeeCreationPage clickSave() {
+        log.info("Clicking Save button...");
         WebElement saveButtonElement = waitForElement(saveButton);
         waitForClickable(saveButton);
         saveButtonElement.click();
+        log.info("Save button clicked successfully.");
+        return this;
     }
 
-    public void createEmployee(String firstName, String middleName, String lastName) {
+    public EmployeeCreationPage createEmployee(String firstName, String middleName, String lastName) {
         enterFirstName(firstName).enterMiddleName(middleName).enterLastName(lastName).clickSave();
+
+        return this;
     }
 }
