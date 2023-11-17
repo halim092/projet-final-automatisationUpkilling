@@ -35,7 +35,7 @@ public class LoginPage {
     }
 
     public LoginPage enterPassword(String password) {
-        if (password.isEmpty()) log.warn("username is empty");
+        if (password.isEmpty()) log.warn("password is empty");
         WebElement passwordElement = wait.until(ExpectedConditions.elementToBeClickable(passwordInput));
         passwordElement.sendKeys(password);
         return this;
@@ -50,5 +50,23 @@ public class LoginPage {
     public HomePage login(String username, String password) {
         enterUsername(username).enterPassword(password).clickLogin();
         return new HomePage(driver);
+    }
+
+    public boolean isLogoutButtonDisplayed() {
+        try {
+        WebElement logoutButton = driver.findElement(By.id("logoutButton")); // Remplacez l'ID par l'identifiant réel de votre bouton de déconnexion
+        return logoutButton.isDisplayed();
+    } catch (org.openqa.selenium.NoSuchElementException | org.openqa.selenium.StaleElementReferenceException e) {
+        return false;
+    }
+    }
+
+    public boolean isEmployeeCreatedSuccessfully() {
+        try {
+            WebElement successMessage = driver.findElement(By.xpath("//div[contains(@class, 'success') and contains(text(), 'Employee created successfully')]"));
+            return successMessage.isDisplayed();
+        } catch (org.openqa.selenium.NoSuchElementException | org.openqa.selenium.StaleElementReferenceException e) {
+            return false;
+        }
     }
 }

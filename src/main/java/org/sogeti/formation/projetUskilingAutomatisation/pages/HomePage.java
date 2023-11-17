@@ -8,6 +8,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
+
 @Log4j2
 public class HomePage {
     private WebDriver driver;
@@ -16,6 +18,8 @@ public class HomePage {
    private By pimMenu = By.xpath("//span[contains(@class, 'menu-item-text') and text()='PIM']\n");
   // @FindBy(xpath = "//span[contains(@class, 'menu-item-text')][contains(., 'PIM')]");
     public HomePage(WebDriver driver) {
+        this.driver=driver;
+        this.wait=new WebDriverWait(driver, Duration.ofSeconds(10));
         PageFactory.initElements(driver , this);
 
     }
