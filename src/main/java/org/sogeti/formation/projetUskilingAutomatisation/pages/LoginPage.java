@@ -35,7 +35,11 @@ public class LoginPage {
     }
 
     public LoginPage enterPassword(String password) {
-        if (password.isEmpty()) log.warn("password is empty");
+        if (password.isEmpty()) {
+            log.warn("Password is empty");
+        } else {
+            log.info("Entering password");
+        }
         WebElement passwordElement = wait.until(ExpectedConditions.elementToBeClickable(passwordInput));
         passwordElement.sendKeys(password);
         return this;
