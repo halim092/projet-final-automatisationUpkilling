@@ -29,14 +29,14 @@ public class LoginPage {
         } else {
             log.info("Entering Username: [{}]", username);
         }
-        WebElement usernameElement = wait.until(ExpectedConditions.presenceOfElementLocated(usernameInput));
+        WebElement usernameElement = wait.until(ExpectedConditions.elementToBeClickable(usernameInput));
         usernameElement.sendKeys(username);
         return this;
     }
 
     public LoginPage enterPassword(String password) {
         if (password.isEmpty()) log.warn("username is empty");
-        WebElement passwordElement = wait.until(ExpectedConditions.presenceOfElementLocated(passwordInput));
+        WebElement passwordElement = wait.until(ExpectedConditions.elementToBeClickable(passwordInput));
         passwordElement.sendKeys(password);
         return this;
     }

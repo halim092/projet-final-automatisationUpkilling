@@ -62,8 +62,9 @@ public class EmployeeCreationPage {
     }
 
     public EmployeeCreationPage createEmployee(String firstName, String middleName, String lastName) {
+        log.info("Creating Employee - First Name: [{}], Middle Name: [{}], Last Name: [{}]", firstName, middleName, lastName);
         enterFirstName(firstName).enterMiddleName(middleName).enterLastName(lastName).clickSave();
-
+        log.info("Employee created successfully.");
         return this;
     }
 }
