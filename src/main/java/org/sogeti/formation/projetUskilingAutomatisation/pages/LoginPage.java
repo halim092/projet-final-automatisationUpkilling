@@ -40,8 +40,12 @@ public class LoginPage {
         } else {
             log.info("Entering password");
         }
+        //WebElement passwordElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[contains(@class, 'menu-item-text') and text()='PIM']")));
+
         WebElement passwordElement = wait.until(ExpectedConditions.elementToBeClickable(passwordInput));
         passwordElement.sendKeys(password);
+        log.info("{} password entered", password);
+
         return this;
     }
 

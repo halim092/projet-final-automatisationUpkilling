@@ -2,10 +2,13 @@ package testsScenario;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.sogeti.formation.projetUskilingAutomatisation.pages.HomePage;
 import org.sogeti.formation.projetUskilingAutomatisation.pages.LoginPage;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.assertTrue;
 
@@ -18,6 +21,8 @@ public class TestScenarioCasTest1 {
         System.setProperty("webdriver.gecko.driver", "src/main/resources/geckodriver.exe");
         driver = new FirefoxDriver();
         driver.get(URL);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
     }
 
     @Test
@@ -31,11 +36,9 @@ public class TestScenarioCasTest1 {
 
         // Act
         LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = loginPage.login(username, password);
 
-        loginPage
-                .enterUsername(username)
-                .enterPassword(password)
-                .login(username, password)
+        homePage
                 .goToPIMScreen()
                 .goToEmployeeCreationPage()
                 .enterFirstName(firstName)
