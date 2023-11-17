@@ -1,5 +1,6 @@
 package org.sogeti.formation.projetUskilingAutomatisation.pages;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,15 +9,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-
+@Log4j2
 public class EmployeeCreationPage {
     private WebDriver driver;
     private WebDriverWait wait;
 
-    private By firstNameInput = By.className("oxd-input oxd-input--active orangehrm-firstname");
-    private By middleNameInput = By.className("oxd-input oxd-input--active orangehrm-middlename");
-    private By lastNameInput = By.className("oxd-input oxd-input--active orangehrm-lastname");
-    private By saveButton = By.className("oxd-button oxd-button--medium oxd-button--secondary orangehrm-left-space");
+    private By firstNameInput = By.cssSelector("oxd-input oxd-input--active orangehrm-firstname");
+    private By middleNameInput = By.cssSelector("oxd-input oxd-input--active orangehrm-middlename");
+    private By lastNameInput = By.cssSelector("oxd-input oxd-input--active orangehrm-lastname");
+    private By saveButton = By.cssSelector("oxd-button oxd-button--medium oxd-button--secondary orangehrm-left-space");
 
     public EmployeeCreationPage(WebDriver driver) {
         this.driver = driver;

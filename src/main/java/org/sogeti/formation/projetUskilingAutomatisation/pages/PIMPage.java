@@ -1,5 +1,6 @@
 package org.sogeti.formation.projetUskilingAutomatisation.pages;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,6 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+@Log4j2
 public class PIMPage {
     private WebDriver driver;
     private WebDriverWait wait;
@@ -19,8 +21,11 @@ public class PIMPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void goToEmployeeCreationPage() {
+    public EmployeeCreationPage goToEmployeeCreationPage() {
+        log.info("Navigating to the Employee Creation Page.");
         WebElement clickBtnAddEmployee = wait.until(ExpectedConditions.elementToBeClickable(btnAddEmployee));
         clickBtnAddEmployee.click();
+        log.info("Navigated to the Employee Creation Page successfully.");
+        return new EmployeeCreationPage(driver);
     }
 }
