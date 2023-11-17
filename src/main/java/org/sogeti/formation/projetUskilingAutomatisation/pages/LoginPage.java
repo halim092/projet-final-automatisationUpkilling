@@ -19,7 +19,7 @@ public class LoginPage {
     public LoginPage(WebDriver driver) {
         this.driver = driver;
 
-        // Spécifiez la durée d'attente comme une instance de Duration
+
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
