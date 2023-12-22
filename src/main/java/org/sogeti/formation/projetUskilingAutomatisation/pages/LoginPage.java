@@ -55,9 +55,9 @@ public class LoginPage {
         return this;
     }
 
-    public HomePage login(String username, String password) {
+    public DashboardPage login(String username, String password) {
         enterUsername(username).enterPassword(password).clickLogin();
-        return new HomePage(driver);
+        return new DashboardPage(driver);
     }
 
     public boolean isLogoutButtonDisplayed() {
