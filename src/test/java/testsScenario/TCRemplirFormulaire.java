@@ -21,6 +21,8 @@ import org.testng.annotations.Test;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class TCRemplirFormulaire {
@@ -35,7 +37,12 @@ public class TCRemplirFormulaire {
         driver = new FirefoxDriver();
         driver.get(URL);
         driver.manage().window().maximize();
-        ExtentSparkReporter htmlReporter = new ExtentSparkReporter("test-output/htmlReporter/TC3_RemplirFormulaire/.html");
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss");
+        String currentDateTime = LocalDateTime.now().format(formatter);
+        String reportName = "TC3_"  + currentDateTime + ".html";
+
+        ExtentSparkReporter htmlReporter = new ExtentSparkReporter("test-output/htmlReporter/TC3_RemplirFormulaire/" + reportName);
         extentReports = new ExtentReports();
         extentReports.attachReporter(htmlReporter);
     }
@@ -75,14 +82,14 @@ public class TCRemplirFormulaire {
                 .clickSelectBlood()
                 .clickRandomBloodTypeOption();
 
-        // Rafraîchir la page
+
         pIMEmployeeListPersonalDetailsPage.refreshPage();
 
 
-        // Vérifier que les informations ont été sauvegardées
-      String actualDateOfBirth = pIMEmployeeListPersonalDetailsPage.getDateOfBirth(); // Utilisez la méthode appropriée pour obtenir la date de naissance
-        String actualGender = pIMEmployeeListPersonalDetailsPage.getSelectedGender(); // Utilisez la méthode appropriée pour obtenir le genre
-        String actualBloodType = pIMEmployeeListPersonalDetailsPage.getBloodType(); // Utilisez la méthode appropriée pour obtenir le type de sang
+
+      String actualDateOfBirth = pIMEmployeeListPersonalDetailsPage.getDateOfBirth();
+        String actualGender = pIMEmployeeListPersonalDetailsPage.getSelectedGender();
+        String actualBloodType = pIMEmployeeListPersonalDetailsPage.getBloodType();
 
         // Assertion
         //Assert.assertEquals(actualDateOfBirth, dateOfBirth, "Date of birth is incorrect");
