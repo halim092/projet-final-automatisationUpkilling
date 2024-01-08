@@ -69,12 +69,5 @@ public class LoginPage {
     }
     }
 
-    public boolean isEmployeeCreatedSuccessfully() {
-        try {
-            WebElement successMessage = driver.findElement(By.xpath("//div[contains(@class, 'success') and contains(text(), 'Employee created successfully')]"));
-            return successMessage.isDisplayed();
-        } catch (org.openqa.selenium.NoSuchElementException | org.openqa.selenium.StaleElementReferenceException e) {
-            return false;
-        }
-    }
+
 }
