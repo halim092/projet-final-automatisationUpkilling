@@ -1,0 +1,12 @@
+{
+  "data": {
+    "username": "Admin",
+    "password": "admin123",
+    "firstName": "Halim",
+    "middleName": "Castro",
+    "lastName": "Allouche",
+    "dateOfBirth": "1992-01-24",
+    "gender": "Male",
+    "employeeId": "3817"
+  }
+}
